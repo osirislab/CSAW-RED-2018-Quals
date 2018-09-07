@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="well imgbox">
+  <h4>Search for classes or assignments!</h4>
+  <form method="post" action="#">
+    <div class="form-group">
+      <label for="search_text">Search!</label>
+      <input class="form-control" name="search_text" id="search_text" required>
+    </div>
+    <div class="form-group">
+      <input class="btn btn-primary" type="submit" value="Search">
+    </div>
+  </form>
+  {% if data %}
+  <ul class="list-group">
+    {% for class_name, assignment_name, discription in data %}
+    <li class="list-group-item">
+      <p>
+        <a href="/view/{{ class_name }}/{{ assignment_name }}">
+          <b>{{ class_name | safe }}::{{ assignment_name | safe }}</b> - {{ discription | safe }}
+        </a>
+      </p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endblock %}
+
