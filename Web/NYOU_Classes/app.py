@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 
 
+flag = ''
+host='127.0.0.1'
+port=5000
+
 from flask import Flask, render_template, g, request, redirect, flash, send_file, url_for
 import auth
 import os
 import hashlib
 import time
+import subprocess
 
 app = Flask(__name__, static_url_path='', static_folder='')
 app.config.from_mapping(
@@ -14,19 +19,30 @@ app.config.from_mapping(
 
 app.register_blueprint(auth.bp)
 
+classes = [
+    'Math',
+]
+
 class_assignments = {
-    'math'   : {'assignment 1': 'write a report'},
-    'english': {'assignment 2': 'write an essay'}
+    'Math'   : {'assignment 1': 'write something interesting'},
 }
 class_overview = {
-    'math'   : 'math class',
-    'english': 'english class'
+    'Math'   : 'Math class',
 }
 
 
 def render(template, **kwargs):
     kwargs['g'] = g
+    kwargs['classes'] = classes
     return render_template(template, **kwargs)
+
+
+def run_chrome(url):
+    url = 'http://127.0.0.1:5000' + url
+#    print(url)
+    cmd = ['/usr/bin/timeout','15','/usr/bin/chromium-browser','--headless','--disable-gpu','--remote-debugging-port=9222',url]
+    print(' '.join(cmd))
+    subprocess.Popen(cmd)
 
 
 def get_assignments(username):
@@ -51,16 +67,22 @@ def submit_assignment(class_name, assignment_name, content):
     if len(res) == 0:
         sql = """
         INSERT INTO user_submissions 
-        (submission, username, class_name, assignment_name) 
-        VALUES (?, ?, ?, ?);
+        (submission, username, class_name, assignment_name, discription) 
+        VALUES (?, ?, ?, ?, ?);
         """
     else:
         sql = """
         UPDATE user_submissions SET submission = ?
-        WHERE username = ? AND class_name = ? AND assignment_name = ?;
+        WHERE username = ? AND class_name = ? AND assignment_name = ? AND discription = ?;
         """
     #print(sql)
-    db.execute(sql, (content, g.user, class_name, assignment_name))
+    db.execute(sql, (
+        content,
+        g.user,
+        class_name,
+        assignment_name,
+        f"{class_name}/{assignment_name}"
+    ))
     db.commit()
 
 
@@ -73,14 +95,46 @@ def index():
     return render('index.html', class_name='Home')
 
 
+@app.route('/verify/<class_name>/<assignment_name>')
+@auth.login_required
+def verify_assignment(class_name, assignment_name):
+    try:
+        db = auth.get_db()
+        assignment_id = int(db.execute(
+            """
+            SELECT id FROM user_submissions
+            WHERE username = ? AND class_name = ? AND assignment_name = ?;
+            """, (g.user, class_name, assignment_name)
+        ).fetchone()[0])
+        run_chrome(f'/internal_verify/{assignment_id}')
+        flash(('success','sucessfully verified'))
+    except:
+        flash(('error', 'error verifying'))
+    return redirect(f'/') #view/{class_name}/{assignment_name}')
+
+@app.route('/internal_verify/<submission_id>')
+#@auth.login_required
+def internal_verify(submission_id):
+    if request.remote_addr != '127.0.0.1':
+        return 'error', 404
+    db = auth.get_db()
+    content = db.execute(
+        """
+        SELECT submission FROM user_submissions
+        WHERE id = ?;
+        """, (submission_id)
+    ).fetchone()[0]
+    return render('verify.html', content=content)
+
+
 @app.route('/class/<class_name>')
 @app.route('/class/<class_name>/<extension>')
 @app.route('/class/<class_name>/<extension>/<assignment_name>')
 @auth.login_required
 def class_page_ex(class_name, extension=None, assignment_name=None):
     # print(extension, assignment_name)
-    if class_name not in class_overview:
-        flash(f'not valid request {request.url}')
+    if class_name not in classes:
+        flash(('error', f'not valid request {request.url}'))
         return redirect('/')
     if assignment_name is not None:
         return render(
@@ -92,7 +146,10 @@ def class_page_ex(class_name, extension=None, assignment_name=None):
     elif extension is not None:
         if extension == 'submissions':
             db = auth.get_db()
-            content = get_assignments(g.user)[class_name]
+            all_assignments = get_assignments(g.user)
+            if class_name not in all_assignments:
+                all_assignments[class_name] = {}
+            content = all_assignments[class_name]
             for key in content:
                 if len(content[key]) >= 10:
                     content[key] = content[key][:10] + '...'
@@ -120,14 +177,15 @@ def class_page_ex(class_name, extension=None, assignment_name=None):
 @app.route('/upload/<class_name>/<assignment_name>', methods=('GET', 'POST'))
 @auth.login_required
 def upload(class_name, assignment_name):
-    if class_name not in class_assignments and assignment_name not in class_assignments[class_name]:
-        flash(f'not valid request {request.url}')
+    if class_name not in classes or assignment_name not in class_assignments[class_name]:
+        flash(('error', f'not valid request {request.url}'))
+        return redirect('/')
     if request.method == 'POST':
         filename = sha2(f"{g.user}{class_name}{assignment_name}{str(time.time())}")
         file_address = f'user_uploads/submissions/{filename}'
         data = request.files.get('submission')
         if data.content_type != 'application/pdf':
-            flash('invalid file format')
+            flash(('error', 'invalid file format'))
             return redirect(f'/upload/{class_name}/{assignment_name}')
         data.save(file_address)
         submit_assignment(class_name, assignment_name, file_address)
@@ -153,12 +211,12 @@ def serve_submission(file_name):
 @app.route('/view/<class_name>/<assignment_name>')
 @auth.login_required
 def view(class_name, assignment_name):
-    if class_name not in class_assignments and assignment_name not in class_assignments[class_name]:
-        flash(f'not valid request {request.url}')
+    if class_name not in classes or assignment_name not in class_assignments[class_name]:
+        flash(('error', f'not valid request {request.url}'))
         return redirect('/')
     submissions = get_assignments(g.user)
     if class_name not in submissions or assignment_name not in submissions[class_name]:
-        flash(f"{assignment_name} not yet submitted")
+        flash(('error',f"{assignment_name} not yet submitted"))
         return redirect('/')
     assignment_file = False
     if submissions[class_name][assignment_name].startswith('user_uploads/'):
@@ -166,17 +224,17 @@ def view(class_name, assignment_name):
     return render(
         'view.html',
         class_name=class_name,
+        assignment_name=assignment_name,
         assignment_file=assignment_file,
         assignment_submission=submissions[class_name][assignment_name],
-        assignment_name=assignment_name
     )
 
 
 @app.route('/submit/<class_name>/<assignment_name>', methods=('POST',))
 @auth.login_required
 def submit(class_name, assignment_name):
-    if class_name not in class_assignments and assignment_name not in class_assignments[class_name]:
-        flash(f'not valid request {request.url}')
+    if class_name not in classes or assignment_name not in class_assignments[class_name]:
+        flash(('error', f'not valid request {request.url}'))
         return redirect('/')
     content = request.form['submission']
     submit_assignment(class_name, assignment_name, content)
@@ -231,4 +289,7 @@ def search():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(
+        host=host,
+        port=port
+    )

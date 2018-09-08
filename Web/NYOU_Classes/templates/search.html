@@ -14,11 +14,12 @@
   </form>
   {% if data %}
   <ul class="list-group">
-    {% for class_name, assignment_name, discription in data %}
+    {% for  discription in data %}
     <li class="list-group-item">
       <p>
-        <a href="/view/{{ class_name }}/{{ assignment_name }}">
-          <b>{{ class_name | safe }}::{{ assignment_name | safe }}</b> - {{ discription | safe }}
+        <a href="/view/{{ discription }}">
+          <!-- <b>{{ class_name | safe }}::{{ assignment_name | safe }}</b> - {{ discription | safe }} -->
+          {{ discription | safe }}
         </a>
       </p>
     </li>

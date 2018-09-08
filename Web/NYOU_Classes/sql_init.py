@@ -21,6 +21,7 @@ SUBMISSION_SQL = Struct(
     CREATE TABLE user_submissions (
     id INTEGER PRIMARY KEY,
     username TEXT,
+    discription TEXT,
     class_name TEXT,
     assignment_name TEXT,
     submission TEXT

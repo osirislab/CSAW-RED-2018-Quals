@@ -28,12 +28,11 @@
                     <li class="nav-item">
                         <a class="nav-link" id="Home-nav" href="/">Home</a>
                     </li>
+                    {% for class_name in classes %}
                     <li class="nav-item">
-                        <a class="nav-link" id="math-nav" href="/class/math">Math</a>
+                        <a class="nav-link" id="{{ class_name }}-nav" href="/class/{{ class_name }}">{{ class_name }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="english-nav" href="/class/english">English</a>
-                    </li>
+                    {% endfor %}
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -48,11 +47,18 @@
                 </ul>
             </nav><br>
         {% endblock %}
-        {% for message in get_flashed_messages()  %}
+            {% for code, message in get_flashed_messages()  %}
+            {% if code == "error" %}
             <div class="alert alert-danger alert-dismissible">
                 <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>{{ message }}</strong>
             </div>
+            {% elif code == "success" %}
+            <div class="alert alert-success alert-dismissible">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{ message }}</strong>
+            </div>
+            {% endif %}
         {% endfor %}
         {% block content %}
         {% endblock %}

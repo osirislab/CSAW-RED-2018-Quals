@@ -81,12 +81,15 @@ def load_logged_in_user():
     user_id = session.get('user_id')
     # print(user_id)
 
-    if user_id is None:
+    try:
+        if user_id is None:
+            g.user = None
+        else:
+            g.user = get_db().execute(
+                'SELECT username FROM users WHERE username = "%s"' % (user_id,)
+            ).fetchone()[0]
+    except:
         g.user = None
-    else:
-        g.user = get_db().execute(
-            'SELECT username FROM users WHERE username = "%s"' % (user_id,)
-        ).fetchone()[0]
 
 
 def login_required(view):
