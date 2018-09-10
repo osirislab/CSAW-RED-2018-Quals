@@ -1,71 +1,32 @@
 from flask import request, redirect, url_for, flash, render_template, session, Blueprint, g
-# from werkzeug.security import check_password_hash, generate_password_hash
-#from db import get_db
 import functools
 import pymysql.cursors
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-def get_db():
-    return pymysql.connect(
-        host='localhost',
-        user='root',
-        db='red',
-        password='youonlygetoneshot',
-        charset='utf8mb4',
-        cursorclass=pymysql.cursors.DictCursor
-    )
-
-
-def execute(db, query):
-    with db.cursor() as cursor:
-        #print(query)
-        cursor.execute(query)
-        return cursor.fetchall()
-
-
-#@bp.route('/register', methods=('GET', 'POST'))
-def register():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        db = get_db()
-        error = None
-
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
-        elif db.execute(
-            "SELECT id FROM users WHERE username = '%s'" % username
-        ).fetchone() is not None:
-            error = 'User {} is already registered.'.format(username)
-
-        if error is None:
-            db.execute(
-                "INSERT INTO users (username, password) VALUES ('%s', '%s')" %
-                (username, password)
-            )
-            db.commit()
-            return redirect(url_for('auth.login'))
-
-        flash(error)
-
-    return render_template('auth/register.html')
-
+DB = pymysql.connect(
+    host='localhost',
+    user='red_user',
+    db='red',
+    password='password',
+    charset='utf8mb4',
+    cursorclass=pymysql.cursors.DictCursor
+)
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        db = get_db()
         error = None
-        res = execute(db,
-            "SELECT id FROM users WHERE username = '%s' and password = '%s'" %
-            (username, password,)
-        )
+        with DB.cursor() as cursor:
+            cursor.execute(
+                "SELECT id FROM users WHERE username = '%s' and password = '%s'" %
+                (username, password,)
+            )
+            res = cursor.fetchall()
+            cursor.close()
         if len(res) != 0:
             user = username
         else:
@@ -91,7 +52,6 @@ def logout():
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
-    # print(user_id)
 
     try:
         if user_id is None:
