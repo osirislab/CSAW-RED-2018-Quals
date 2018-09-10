@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 
-flag = ''
 host='127.0.0.1'
 port=5000
 
 from flask import Flask, render_template, g, request, redirect, flash, send_file, url_for
+from flag import flag
 import auth
 import os
 import hashlib
@@ -24,7 +24,7 @@ classes = [
 ]
 
 class_assignments = {
-    'Math'   : {'assignment 1': 'write something interesting'},
+    'Math'   : {} #{'assignment 1': 'write something interesting'},
 }
 class_overview = {
     'Math'   : 'Math class',
@@ -198,8 +198,8 @@ def upload(class_name, assignment_name):
         )
 
 
-@app.route('/user_uploads/<file_name>')
-@auth.login_required
+#@app.route('/user_uploads/<file_name>')
+#@auth.login_required
 def serve_submission(file_name):
     src = os.path.join(
         os.path.abspath(os.path.dirname(__file__)),
@@ -241,8 +241,8 @@ def submit(class_name, assignment_name):
     return redirect(f'/view/{class_name}/{assignment_name}')
 
 
-@app.route('/profile_pictures/<file_name>')
-@auth.login_required
+#@app.route('/profile_pictures/<file_name>')
+#@auth.login_required
 def profile_pictures(file_name):
     src = os.path.join(
         os.path.abspath(os.path.dirname(__file__)),
@@ -253,8 +253,8 @@ def profile_pictures(file_name):
     return send_file(src)
 
 
-@app.route('/profile', methods=("GET", "POST"))
-@auth.login_required
+#@app.route('/profile', methods=("GET", "POST"))
+#@auth.login_required
 def profile():
     if request.method == 'POST':
         photo = request.files.get('profile_picture')
@@ -275,11 +275,15 @@ def search():
     if request.method == 'POST':
         search_text = request.form.get('search_text')
         sql = """
-        SELECT class_name, assignment_name, submission FROM user_submissions
-        WHERE username = '%s' AND (assignment_name LIKE '%s' OR class_name LIKE '%s');
-        """ % (g.user, search_text, search_text)
+        SELECT discription FROM user_submissions
+        WHERE username = '%s' AND assignment_name LIKE '%s';
+        """ % (g.user, search_text)
         db = auth.get_db()
-        data = db.execute(sql).fetchall()
+        print(sql)
+        data = list(map(
+            lambda x: x[0],
+            db.execute(sql).fetchall()
+        ))
         db.commit()
         print(data)
     return render(

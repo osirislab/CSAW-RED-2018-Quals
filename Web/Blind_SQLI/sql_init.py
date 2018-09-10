@@ -29,9 +29,25 @@ SUBMISSION_SQL = Struct(
     """
 )
 
+FLAG_TABLE = Struct(
+    name='flag_is_in_here',
+    sql="""
+    CREATE TABLE flag_is_in_here (
+    id INTEGER PRIMARY KEY,
+    entry TEXT
+    );
+    """
+)
+
+
+
 # CLASSES_SQL = Struct(
 #     name='classes',
 #     sql="""CREATE TABLE classes (name TEXT PRIMARY KEY, assignments TEXT);"""
 # )
 
-table_map = {'users': USER_SQL, 'user_submissions': SUBMISSION_SQL}
+table_map = {
+    'users': USER_SQL,
+    'user_submissions': SUBMISSION_SQL,
+    'flag_is_in_here': FLAG_TABLE
+}

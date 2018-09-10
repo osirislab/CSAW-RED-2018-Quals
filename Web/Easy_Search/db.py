@@ -1,4 +1,5 @@
 import sqlite3
+from flag import flag
 
 
 def init_db(db):
@@ -27,9 +28,9 @@ if __name__ == "__main__":
     db = get_db()
     init_db(db)
     db.execute(
-        """
+        f"""
         INSERT INTO users (username, password)
-        VALUES ('admin', '123');
+        VALUES ('admin', '{flag}');
         """
     )
     db.commit()

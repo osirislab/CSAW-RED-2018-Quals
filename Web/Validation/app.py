@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-flag = ''
+flag = 'flag{MOVING_UP_IN_THE_WORLD_BRUHH}'
 host='127.0.0.1'
 port=5000
 
@@ -174,8 +174,8 @@ def class_page_ex(class_name, extension=None, assignment_name=None):
         )
 
 
-@app.route('/upload/<class_name>/<assignment_name>', methods=('GET', 'POST'))
-@auth.login_required
+#@app.route('/upload/<class_name>/<assignment_name>', methods=('GET', 'POST'))
+#@auth.login_required
 def upload(class_name, assignment_name):
     if class_name not in classes or assignment_name not in class_assignments[class_name]:
         flash(('error', f'not valid request {request.url}'))
@@ -198,8 +198,8 @@ def upload(class_name, assignment_name):
         )
 
 
-@app.route('/user_uploads/<file_name>')
-@auth.login_required
+#@app.route('/user_uploads/<file_name>')
+#@auth.login_required
 def serve_submission(file_name):
     src = os.path.join(
         os.path.abspath(os.path.dirname(__file__)),
@@ -253,8 +253,8 @@ def profile_pictures(file_name):
     return send_file(src)
 
 
-@app.route('/profile', methods=("GET", "POST"))
-@auth.login_required
+#@app.route('/profile', methods=("GET", "POST"))
+#@auth.login_required
 def profile():
     if request.method == 'POST':
         photo = request.files.get('profile_picture')
@@ -268,8 +268,8 @@ def profile():
         picture_location=picture_location
     )
 
-@app.route('/search', methods=('GET', 'POST'))
-@auth.login_required
+#@app.route('/search', methods=('GET', 'POST'))
+#@auth.login_required
 def search():
     data=[]
     if request.method == 'POST':

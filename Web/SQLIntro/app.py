@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-flag = ''
+flag = 'flag{YOU_PASSED_WEB_SECURITY_101_BRUHH}'
 host='127.0.0.1'
 port=5000
 
@@ -20,14 +20,17 @@ app.config.from_mapping(
 app.register_blueprint(auth.bp)
 
 classes = [
-    'Math',
+#    'Math',
+#    'English'
 ]
 
 class_assignments = {
-    'Math'   : {'assignment 1': 'write something interesting'},
+    'Math'   : {'assignment 1': 'write a report'},
+    'english': {'assignment 2': 'write an essay'}
 }
 class_overview = {
     'Math'   : 'Math class',
+    'English': 'English class'
 }
 
 
@@ -92,7 +95,10 @@ def sha2(s):
 @app.route('/')
 @auth.login_required
 def index():
-    return render('index.html', class_name='Home')
+    return render(
+        'index.html',
+        content=flag
+    )
 
 
 @app.route('/verify/<class_name>/<assignment_name>')
@@ -198,8 +204,8 @@ def upload(class_name, assignment_name):
         )
 
 
-@app.route('/user_uploads/<file_name>')
-@auth.login_required
+#@app.route('/user_uploads/<file_name>')
+#@auth.login_required
 def serve_submission(file_name):
     src = os.path.join(
         os.path.abspath(os.path.dirname(__file__)),
@@ -241,8 +247,8 @@ def submit(class_name, assignment_name):
     return redirect(f'/view/{class_name}/{assignment_name}')
 
 
-@app.route('/profile_pictures/<file_name>')
-@auth.login_required
+#@app.route('/profile_pictures/<file_name>')
+#@auth.login_required
 def profile_pictures(file_name):
     src = os.path.join(
         os.path.abspath(os.path.dirname(__file__)),
@@ -253,8 +259,8 @@ def profile_pictures(file_name):
     return send_file(src)
 
 
-@app.route('/profile', methods=("GET", "POST"))
-@auth.login_required
+#@app.route('/profile', methods=("GET", "POST"))
+#@auth.login_required
 def profile():
     if request.method == 'POST':
         photo = request.files.get('profile_picture')
@@ -268,8 +274,8 @@ def profile():
         picture_location=picture_location
     )
 
-@app.route('/search', methods=('GET', 'POST'))
-@auth.login_required
+#@app.route('/search', methods=('GET', 'POST'))
+#@auth.login_required
 def search():
     data=[]
     if request.method == 'POST':
