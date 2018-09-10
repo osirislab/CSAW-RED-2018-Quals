@@ -92,11 +92,14 @@ def sha2(s):
 @app.route('/')
 @auth.login_required
 def index():
-    return render('index.html', class_name='Home')
+    return render(
+        'index.html',
+        content='Whoa there stranger! You\'ve gone too far, re-read the challange discription!!'
+    )
 
 
-@app.route('/verify/<class_name>/<assignment_name>')
-@auth.login_required
+#@app.route('/verify/<class_name>/<assignment_name>')
+#@auth.login_required
 def verify_assignment(class_name, assignment_name):
     try:
         db = auth.get_db()
@@ -112,7 +115,7 @@ def verify_assignment(class_name, assignment_name):
         flash(('error', 'error verifying'))
     return redirect(f'/') #view/{class_name}/{assignment_name}')
 
-@app.route('/internal_verify/<submission_id>')
+#@app.route('/internal_verify/<submission_id>')
 #@auth.login_required
 def internal_verify(submission_id):
     if request.remote_addr != '127.0.0.1':

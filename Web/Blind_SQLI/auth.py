@@ -1,13 +1,31 @@
 from flask import request, redirect, url_for, flash, render_template, session, Blueprint, g
 # from werkzeug.security import check_password_hash, generate_password_hash
-from db import get_db
+#from db import get_db
 import functools
-
+import pymysql.cursors
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@bp.route('/register', methods=('GET', 'POST'))
+def get_db():
+    return pymysql.connect(
+        host='localhost',
+        user='root',
+        db='red',
+        password='youonlygetoneshot',
+        charset='utf8mb4',
+        cursorclass=pymysql.cursors.DictCursor
+    )
+
+
+def execute(db, query):
+    with db.cursor() as cursor:
+        #print(query)
+        cursor.execute(query)
+        return cursor.fetchall()
+
+
+#@bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
         username = request.form['username']
@@ -20,13 +38,13 @@ def register():
         elif not password:
             error = 'Password is required.'
         elif db.execute(
-            'SELECT id FROM users WHERE username = "%s"' % username
+            "SELECT id FROM users WHERE username = '%s'" % username
         ).fetchone() is not None:
             error = 'User {} is already registered.'.format(username)
 
         if error is None:
             db.execute(
-                'INSERT INTO users (username, password) VALUES ("%s", "%s")' %
+                "INSERT INTO users (username, password) VALUES ('%s', '%s')" %
                 (username, password)
             )
             db.commit()
@@ -40,32 +58,26 @@ def register():
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.form.get('username')
+        password = request.form.get('password')
         db = get_db()
         error = None
-        if db.execute(
-                'SELECT * FROM users WHERE username = "%s" and password = "%s"' %
-                (username, password,)
-        ).fetchone() is not None:
+        res = execute(db,
+            "SELECT id FROM users WHERE username = '%s' and password = '%s'" %
+            (username, password,)
+        )
+        if len(res) != 0:
             user = username
         else:
             error = 'Incorrect username or password.'
-        # user = db.execute(
-        #     'SELECT * FROM users WHERE username = "%s"' % username
-        # ).fetchone()
-
-        # if user is None:
-        #     error = 'Incorrect username.'
-        # elif not check_password_hash(user[2], password):
-        #     error = 'Incorrect password.'
 
         if error is None:
             session.clear()
             session['user_id'] = user
-            return redirect(url_for('index'))
-
-        flash(error)
+            return redirect('/')
+        else:
+            flash(('error', error))
+            return render_template('auth/login.html'), 400
 
     return render_template('auth/login.html')
 
@@ -85,9 +97,7 @@ def load_logged_in_user():
         if user_id is None:
             g.user = None
         else:
-            g.user = get_db().execute(
-                'SELECT username FROM users WHERE username = "%s"' % (user_id,)
-            ).fetchone()[0]
+            g.user = user_id
     except:
         g.user = None
 
