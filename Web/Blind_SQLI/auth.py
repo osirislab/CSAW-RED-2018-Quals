@@ -5,28 +5,35 @@ import pymysql.cursors
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-DB = pymysql.connect(
-    host='localhost',
-    user='red_user',
-    db='red',
-    password='password',
-    charset='utf8mb4',
-    cursorclass=pymysql.cursors.DictCursor
-)
+def get_db():
+    return pymysql.connect(
+        host='localhost',
+        user='red_user',
+        db='red',
+        password='password',
+        charset='utf8mb4',
+        cursorclass=pymysql.cursors.DictCursor
+    )
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        username = request.args.get('username')
+        password = request.args.get('password')
         error = None
-        with DB.cursor() as cursor:
-            cursor.execute(
-                "SELECT id FROM users WHERE username = '%s' and password = '%s'" %
-                (username, password,)
-            )
-            res = cursor.fetchall()
-            cursor.close()
+        db = get_db()
+        res = []
+        try:
+            with db.cursor() as cursor:
+                cursor.execute(
+                    "SELECT id FROM users WHERE username = '%s' and password = '%s'" %
+                    (username, password,)
+                )
+                res = cursor.fetchall()
+                cursor.close()
+        except:
+            error = 'sql error'
+        
         if len(res) != 0:
             user = username
         else:

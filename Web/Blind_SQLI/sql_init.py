@@ -15,20 +15,6 @@ USER_SQL = Struct(
     """
 )
 
-SUBMISSION_SQL = Struct(
-    name='user_submissions',
-    sql="""
-    CREATE TABLE user_submissions (
-    id INTEGER PRIMARY KEY,
-    username TEXT,
-    discription TEXT,
-    class_name TEXT,
-    assignment_name TEXT,
-    submission TEXT
-    );
-    """
-)
-
 FLAG_TABLE = Struct(
     name='flag_is_in_here',
     sql="""
@@ -38,13 +24,6 @@ FLAG_TABLE = Struct(
     );
     """
 )
-
-
-
-# CLASSES_SQL = Struct(
-#     name='classes',
-#     sql="""CREATE TABLE classes (name TEXT PRIMARY KEY, assignments TEXT);"""
-# )
 
 table_map = {
     'users': USER_SQL,
