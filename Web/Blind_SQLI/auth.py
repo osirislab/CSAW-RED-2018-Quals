@@ -18,18 +18,21 @@ def get_db():
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        username = request.args.get('username')
+        password = request.args.get('password')
         error = None
         db = get_db()
-        with db.cursor() as cursor:
-            cursor.execute(
-                "SELECT id FROM users WHERE username = '%s' and password = '%s'" %
-                (username, password,)
-            )
-            res = cursor.fetchall()
-            cursor.close()
-        db.close()
+        res = []
+        try:
+            with db.cursor() as cursor:
+                cursor.execute(
+                    "SELECT id FROM users WHERE username = '%s' and password = '%s'" %
+                    (username, password,)
+                )
+                res = cursor.fetchall()
+                cursor.close()
+        except:
+            error = 'database error'
         if len(res) != 0:
             user = username
         else:
