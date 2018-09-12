@@ -35,8 +35,8 @@ def render(template, **kwargs):
     kwargs['classes'] = classes
     return render_template(template, **kwargs)
 
-@app.route('/')
-@auth.login_required
+#@app.route('/')
+#@auth.login_required
 def index():
     return render(
         'index.html',
