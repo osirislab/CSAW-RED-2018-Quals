@@ -20,11 +20,11 @@ app.config.from_mapping(
 app.register_blueprint(auth.bp)
 
 classes = [
-#    'Math',
+    'Math',
 ]
 
 class_assignments = {
-    'Math'   : {'assignment 1': 'write something interesting'},
+    'Math'   : {} #{'assignment 1': 'write something interesting'},
 }
 class_overview = {
     'Math'   : 'Math class',

@@ -19,7 +19,7 @@ with open("flag", 'r') as flagfile:
 flag = " ".join(flag)
 
 for a in addrs:
-    #time.sleep(random.randint(0,8))
+    time.sleep(random.randint(0,8))
     r = requests.get(a)
     payload = "" 
     if random.randint(0,4) == 2 and not flagged:

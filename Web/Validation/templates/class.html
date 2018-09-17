@@ -29,7 +29,7 @@
                         {% elif extension == "assignments" %}
                             {% if assignment_name %}  {# for submissions #}
                                 <h1>{{ assignment_name }}</h1>
-                                <form method="post" action="/submit/{{ class_name }}/{{ assignment_name }}">
+                                <form method="post" action="/submit">
                                     <div class="form-group">
                                         <label for="submission">submission</label>
                                         <textarea placeholder="" class="form-control" name="submission" id="submission" required></textarea>
@@ -54,17 +54,6 @@
                                     {% endfor %}
                                 </ul>
                             {% endif %}
-                        {% elif extension == 'submissions' %}
-                            <h2 style="padding-left:1ch">Submissions</h2>
-                            <ul class="list-group">
-                                {% for a_name, discription in content.items() %}
-                                    <li class="list-group-item">
-                                        <a href="/view/{{ class_name }}/{{ a_name }}">
-                                            <p><b>{{ a_name }}</b> - {{ discription | safe }}</p>
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
                         {% endif %}
                     {% endblock %}
                 </div>

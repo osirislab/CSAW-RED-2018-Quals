@@ -1,0 +1,118 @@
+import sys
+import pyaudio
+import quietnet
+import wave
+
+rate = 44100
+freq = 19000# chosen because it is outside most people's hearing and worked for my microphone and speakers
+freq1 = 29000
+freq2 = 39000
+
+channels = 1
+frame_length = 3
+chunk = 256
+datasize = chunk * frame_length
+sigil = "00"
+
+FORMAT = pyaudio.paInt16
+CHANNELS = channels
+RATE = rate
+FREQ_ZERO = freq
+FREQ_ONE = freq1
+FREQ_TWO = freq2
+FREQ_OFF = 0
+FRAME_LENGTH = frame_length
+DATASIZE = datasize
+
+p = pyaudio.PyAudio()
+
+user_input = input if sys.version_info.major >= 3 else raw_input
+
+def make_buffer_from_bit_pattern(pattern, on_freq, off_freq):
+    """ Takes a pattern and returns an audio buffer that encodes that pattern """
+    # the key's middle value is the bit's value and the left and right bits are the bits before and after
+    # the buffers are enveloped to cleanly blend into each other
+
+    last_bit = pattern[-1]
+    output_buffer = []
+    offset = 0
+
+    for i in range(len(pattern)):
+        bit = pattern[i]
+        if i < len(pattern) - 1:
+            next_bit = pattern[i+1]
+        else:
+            next_bit = pattern[0]
+
+        freq = on_freq if bit == '1' else off_freq
+        tone = quietnet.tone(freq, DATASIZE, offset=offset)
+        output_buffer += quietnet.envelope(tone, left=last_bit=='0', right=next_bit=='0')
+        offset += DATASIZE
+        last_bit = bit
+
+    return quietnet.pack_buffer(output_buffer)
+
+def make_custom_buffer_from_bit_pattern(pattern, zero_freq=FREQ_OFF, one_freq=FREQ_ONE, two_freq=FREQ_TWO, off_freq=0):
+    """ Takes a pattern and returns an audio buffer that encodes that pattern """
+    # the key's middle value is the bit's value and the left and right bits are the bits before and after
+    # the buffers are enveloped to cleanly blend into each other
+
+    last_bit = pattern[-1]
+    output_buffer = []
+    offset = 0
+
+    for i in range(len(pattern)):
+        bit = pattern[i]
+        if i < len(pattern) - 1:
+            next_bit = pattern[i+1]
+        else:
+            next_bit = pattern[0]
+
+        freq = 0 
+
+        if bit == '0':
+            freq = zero_freq
+        elif bit == '1':
+            freq = one_freq
+        elif bit == '2':
+            freq = two_freq
+        else:
+            freq = off_freq
+
+        tone = quietnet.tone(freq, DATASIZE, offset=offset)
+        output_buffer += quietnet.envelope(tone, left = False, right = False)
+        offset += DATASIZE
+        last_bit = bit
+
+    return quietnet.pack_buffer(output_buffer)
+
+def play_buffer(buffer):
+    output = b''.join(buffer)
+    #stream.write(output)
+    wave_file = wave.open("test.wav", 'wb')
+    wave_file.setnchannels(CHANNELS)
+    wave_file.setsampwidth(p.get_sample_size(FORMAT))
+    wave_file.setframerate(RATE)
+    wave_file.writeframes(output)
+    wave_file.close()
+
+
+if __name__ == "__main__":
+    print("Welcome to quietnet. Use ctrl-c to exit")
+'''
+    try:
+        # get user input and play message
+        while True:
+            message = user_input("> ")
+            try:
+              pattern = psk.encode(message)
+              buffer = make_buffer_from_bit_pattern(pattern, FREQ, FREQ_OFF)
+              play_buffer(buffer)
+            except KeyError:
+              print("Messages may only contain printable ASCII characters.")
+    except KeyboardInterrupt:
+        # clean up our streams and exit
+        stream.stop_stream()
+        stream.close()
+        p.terminate()
+        print("exited cleanly")'''
