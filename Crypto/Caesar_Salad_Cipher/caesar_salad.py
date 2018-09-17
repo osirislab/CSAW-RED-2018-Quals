@@ -66,9 +66,15 @@ CHALLENGE
 
 Give them the ingrediants and lettuce strucutre and the alphabet and the cipher and hopefully they take the substitution cipher hint and realize you need to "stack" the ingrediants onto the alphabet in lettuce strucutre order.
 
+
+CHALLENGE 2
+-----------
+
+Oh no! Someone messed with the permutations of ingrediants and now I have no clue how to decipher the message! Try and recover the plaintext, well I mean do or do not there is no try so definitely recover the plaintext. 
+
 '''
 
-ingrediants = ['ROMAINE', 'DRESSING', 'PARMESAN', 'ANCHOVIES', 'CROUTONS', 'PARMESAN']
+ingrediants = ['ROMAINE', 'DRESSING', 'ANCHOVIES', 'CROUTONS', 'PARMESAN']
 
 def substitute(alphabet, substitute):
     x = substitute + alphabet
@@ -80,11 +86,12 @@ def substitute(alphabet, substitute):
 
 alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ{}_'
 cipher = alphabet
-plaintext = 'FLAG{YEET_TOO_LEET_CANT_BE_BEET}'
+plaintext = 'FLAG{I_LIKE_MY_SALAD_WITH_ANCHOVIES_THATS_HOW_CAESAR_INTENDED_IT}'
 
 for item in ingrediants:
     cipher = substitute(cipher, item)
-print(cipher)
+print("CHALLENGE PT 1\n" + "-"*20)
+print("\nCipher: " + cipher)
 
 def encrypt(plaintext, key, alphabet):
     keyIndices = [alphabet.index(k) for k in plaintext]
@@ -95,5 +102,50 @@ def decrypt(cipher, key, alphabet):
     return ''.join(alphabet[keyIndex] for keyIndex in keyIndices)
 
 ciphertext = encrypt(plaintext, cipher, alphabet)
-print(ciphertext)
-print(decrypt(ciphertext, cipher, alphabet))
+print("Ciphertext: " + ciphertext)
+print("Decrypted Plaintext: " + decrypt(ciphertext, cipher, alphabet))
+
+
+print("\n\nCHALLENGE PT 2\n" + "-"*20 + "\n")
+
+ingrediants_master_key = ['DRESSING', 'ANCHOVIES', 'PARMESAN', 'CROUTONS', 'ROMAINE']
+
+print "Master Permutation:",
+print(ingrediants_master_key)
+
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ{}_'
+cipher = alphabet
+plaintext = 'FLAG{DRESSING_FIRST_IS_INSANITY_THE_ROMAINE_WONT_BE_PROPERLY_DRESSED}'
+
+for item in ingrediants_master_key:
+    cipher = substitute(cipher, item)
+
+print("\nCipher: " + cipher)
+ciphertext = encrypt(plaintext, cipher, alphabet)
+print("Ciphertext: " + ciphertext)
+print("Decrypted Plaintext: " + decrypt(ciphertext, cipher, alphabet))
+
+print("\n\nCHALLENGE PT 2 SOLVER\n" + "-"*20 + "\n")
+
+print("We are given the following: ")
+print("Alphabet: " + alphabet)
+print("Ciphertext: " + ciphertext)
+print "Ingrediants:",
+print ingrediants
+
+from itertools import permutations
+
+def solver():
+    print "\nRunning Solver..."
+    potential_flags = []
+    for perm in permutations(ingrediants):
+        cipher = alphabet
+        for item in perm:
+            cipher = substitute(cipher, item)
+        plaintext = decrypt(ciphertext, cipher, alphabet)
+        if "FLAG" in plaintext:
+            potential_flags.append(plaintext)
+    print "\nPotential Flags:"
+    print "\n".join(potential_flags)
+
+solver()
