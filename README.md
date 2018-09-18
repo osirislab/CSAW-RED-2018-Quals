@@ -1,17 +1,18 @@
 # CSAW-RED-2018-Quals
 Challenge repository
 
-## Crypto - 1
-- Caesar Salad ()
+## Crypto - 4
+- Caesar Salad 1
+- Caesar Salad 2
 - Yeet (Single byte XOR)
 - Yeeeeeeeeeeet (Multi Byte Xor)
 
 ## Forensics - 6
-- FeelThePower ()
-- MirrorMirror (pcap)
-- HundredsAndHundreds
-- PacketPacket (pcap)
-- TheBigPicture (pcap)
+- FeelThePower
+- MirrorMirror (A-record)
+- I'mInTheBand
+- PacketPacket (solver)
+- TheBigPicture (solver)
 - UltraHyperMegaSonic (solver)
 
 ## Web - 4
@@ -20,7 +21,16 @@ Challenge repository
 - SQLIntro
 - Validation 
 
-## PWN - 1
+## PWN - 7
+- AAAA
 - ADHD 250 pts (ROPChain with libc and no built-in /bin/sh)
+- GOT_IMMM
+- dinner_time
+- poprops
 - bipolar 200 pts (PIE binary with single byte overwrite necessary) 
 - schizophrenia 400 pts (Null byte poison, very basic impl with win fn)
+
+## Reversing - 3
+- babyrev
+- flippity
+- road
