@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 from pwn import *
 
-e = ELF("./a.out").symbols
-p = process("./a.out")
+e = ELF("./buff").symbols
+p = process("./buff")
 give_shell = e["give_shell"]
 
 print(hex(give_shell))

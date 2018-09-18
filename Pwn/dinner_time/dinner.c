@@ -1,30 +1,30 @@
 #include <stdio.h>
 
-const char * use_me = "/bin/sh";
+const char * dessert = "/bin/sh";
 
-int gadget_1() {
+int entree_1() {
     __asm__ volatile("syscall ; ret");
 }
 
-int gadget_2() {
+int entree_2() {
     __asm__ volatile("pop %rdi ; ret");
 }
 
-int gadget_3() {
+int entree_3() {
     __asm__ volatile("pop %rsi ; ret");
 }
 
-int gadget_4() {
+int entree_4() {
     __asm__ volatile("pop %rdx ; ret");
 }
 
-int gadget_5() {
+int entree_5() {
     __asm__ volatile("pop %rax ; ret");
 }
 
 int main() {
     char buf[0x30];
-    puts("GO GO GADGET POP A SHELL !! (: \n");
+    puts("What will you be having for dinner !! (: \n");
     fgets(buf, 0x400, stdin);
     return 0;
 }

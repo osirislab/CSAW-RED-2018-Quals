@@ -12,6 +12,6 @@ WORKDIR /app
 ADD . /app
 RUN chmod -R 700 /app
 
-EXPOSE 8989
+EXPOSE 1212
 
-ENTRYPOINT ["socat", "TCP-LISTEN:8989,reuseaddr,fork","EXEC:/app/run.sh"]
+ENTRYPOINT ["socat", "TCP-LISTEN:1212,reuseaddr,fork","EXEC:/app/run.sh"]
