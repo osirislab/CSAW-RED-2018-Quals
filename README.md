@@ -19,4 +19,4 @@ Challenge repository
 - Validation 
 
 ## PWN - 1
-- ROPChain without /bin/sh in binary but with libc
+- ADHD 200 pts

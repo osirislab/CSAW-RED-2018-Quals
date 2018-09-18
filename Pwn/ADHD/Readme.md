@@ -2,9 +2,14 @@
 
 Jumpy jump?
 
+250 pts
+
 # Deploying
 
 Runs on port 8000 inside container
+
+$ docker build -t adhd .
+$ docker run -it -p <outerport>:8000 adhd
 
 # Challenge
 
@@ -22,7 +27,7 @@ so they have to take into account the cleared registers as well.
 $ python solve.py -b adhd -e libc.so.6
 $ cat flag.txt
 
-### Tested 
+### Tested remotely (locally)
 
 $ python solve.py -r <remoteaddr> -p <port> -e libc.so.6
 $ cat flag.txt
