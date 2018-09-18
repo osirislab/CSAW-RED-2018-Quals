@@ -19,4 +19,5 @@ Challenge repository
 - Validation 
 
 ## PWN - 1
-- ADHD 200 pts (ROPChain with libc and no built-in /bin/sh)
+- ADHD 250 pts (ROPChain with libc and no built-in /bin/sh)
+- bipolar 200 pts (PIE binary with single byte overwrite necessary) 

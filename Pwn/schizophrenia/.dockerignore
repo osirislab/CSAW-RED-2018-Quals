@@ -1,7 +1,6 @@
 Dockerfile
 .dockerignore
-libc.so.6
-Readme.md
 Makefile
+Readme.md
 solve.py
 source.c

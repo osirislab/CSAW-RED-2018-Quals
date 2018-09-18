@@ -19,7 +19,6 @@
 
 # Pwn:
 - Buffer Overflow (Mina/Leon)
-- Simple PIE with get_flag fn and buffer overflow for small jump to fn - Leon
 - Simple GOT overwrite with get_flag fn - Leon
 - Add more if you need it
 
