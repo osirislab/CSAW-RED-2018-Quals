@@ -1,6 +1,4 @@
 # Crypto: (8)
-- SingleByteXOR
-- MultiByteXOR
 - Vigenere Ciper?
 - RSA shit
     - Broken RSA Implementation
@@ -19,7 +17,6 @@
 
 # Pwn:
 - Buffer Overflow (Mina/Leon)
-- Simple GOT overwrite with get_flag fn - Leon
 - Add more if you need it
 
 # Web: (2 + Webassign)
