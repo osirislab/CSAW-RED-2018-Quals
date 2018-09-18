@@ -1,15 +1,15 @@
-#Title 
+# Title 
 - BabyRev
 
-#Description 
+# Description 
 - eazy peazy reverzing :)
 
-#Points 
+# Points 
 - 100
 
-#Flag 
+# Flag 
 - flag{60od_job_B4by_r3VeRzyng_C0mPl3tE!}
 
-#Solution 
+# Solution 
 - reverse constraints for special number in check function 100 times
 - Flag should then print
