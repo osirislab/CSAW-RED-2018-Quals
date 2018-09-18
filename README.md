@@ -30,7 +30,8 @@ Challenge repository
 - bipolar 200 pts (PIE binary with single byte overwrite necessary) 
 - schizophrenia 400 pts (Null byte poison, very basic impl with win fn)
 
-## Reversing - 3
+## Reversing - 4
 - babyrev
 - flippity
 - road
+- chary
