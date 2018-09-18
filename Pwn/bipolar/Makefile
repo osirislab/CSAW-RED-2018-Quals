@@ -1,6 +1,6 @@
 CC=gcc
-FLAGS=-z relro -z now
-TARGET=adhd
+FLAGS=-fPIE -pie -z relro -z now -fno-stack-protector
+TARGET=pibolar
 OBJS=source.c
 
 all: $(OBJS)

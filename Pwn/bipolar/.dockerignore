@@ -1,0 +1,6 @@
+Dockerfile
+.dockerignore
+Makefile
+Readme.md
+solve.py
+source.c

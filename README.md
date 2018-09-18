@@ -19,4 +19,4 @@ Challenge repository
 - Validation 
 
 ## PWN - 1
-- ADHD 200 pts
+- ADHD 200 pts (ROPChain with libc and no built-in /bin/sh)
