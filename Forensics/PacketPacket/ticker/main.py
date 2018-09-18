@@ -3,6 +3,7 @@ import random
 import requests
 import copy
 import time
+import os
 
 class FakeFile:
     def __init__(self, filename):
@@ -45,7 +46,7 @@ def send_csv(csv, url):
 
 
 if __name__ == "__main__":
-    headers = open("headers", 'r').read().split()
+    headers = open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'headers'), 'r').read().split()
     for i in range(random.randint(15,260)):
         if len(headers) > 0:
             fake = gen_csv(random.randint(10,340), random.randint(1, len(headers)), headers)
