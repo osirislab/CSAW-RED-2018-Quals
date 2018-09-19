@@ -21,7 +21,7 @@ Challenge repository
 - SQLIntro
 - Validation 
 
-## PWN - 7
+## PWN - 8
 - AAAA
 - ADHD 250 pts (ROPChain with libc and no built-in /bin/sh)
 - GOT_IMMM
@@ -29,8 +29,10 @@ Challenge repository
 - poprops
 - bipolar 200 pts (PIE binary with single byte overwrite necessary) 
 - schizophrenia 400 pts (Null byte poison, very basic impl with win fn)
+- make_a_wish
 
-## Reversing - 3
+## Reversing - 4
 - babyrev
 - flippity
 - road
+- chary

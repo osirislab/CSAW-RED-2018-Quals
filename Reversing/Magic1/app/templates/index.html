@@ -1,0 +1,105 @@
+<!DOCTYPE hmtl>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>Magic 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- styles -->
+	<style>
+	</style>
+  </head>
+  <body class="white-text black">
+	<div class="container">
+		<h1 id="title" class="center">Magic 1</h1>
+		<div id="root"></div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+	<script type="text/babel">
+	class Square extends React.Component {
+      constructor(props) {
+        super(props);
+		this.handleChange = this.handleChange.bind(this);
+        this.state = {
+          grid: [
+            [null,null,null,null,1,null,null,null,null],
+            [null,null,null,9,null,22,null,null,null],
+            [null,null,8,null,null,null,43,null,null],
+            [null,7,null,null,null,null,null,55,null],
+            [6,null,null,null,null,null,null,null,76],
+            [null,27,null,null,null,null,null,75,null],
+            [null,null,39,null,null,null,74,null,null],
+            [null,null,null,60,null,73,null,null,null],
+            [null,null,null,null,81,null,null,null,null],
+          ]
+        };
+      }
+
+	  handleChange(e) {
+		var x = parseInt(e.target.id[0]);
+		var y = parseInt(e.target.id[1]);
+		var tmp = this.state.grid;
+		tmp[x][y] = parseInt(e.target.value);
+		this.setState({grid: tmp});
+		if (this.check()) {
+		  this.submit();
+		}
+	  }
+
+	  check() {
+		var check = true;
+		this.state.grid.forEach((r,i) => {
+		  r.forEach((n,j) => {
+			if (n == null) {
+			  check = false;
+			}
+		  })
+		});
+
+		return check;
+	  }
+
+	  submit() {
+		fetch('/submit', {
+		  method: 'POST',
+		  body: JSON.stringify(this.state.grid),
+		  headers:{
+		    'Content-Type': 'application/json'
+		  }
+		}).then(res => res.text().then(text => {
+		  document.getElementById('title').innerHTML = text;
+		}));
+	  }
+    
+      render() {
+        return (
+          <div id="square" className="card-panel red darken-2">
+          {this.state.grid.map((r,i) =>
+            <div className="row">
+			  <div className="col s1"></div>
+              {r.map((c,j) =>
+                <div className="col s1">
+                	<input type="number" id={String(i)+String(j)} value={this.state.grid[i][j]} onChange={this.handleChange} />
+                </div>
+              )}
+			  <div className="col s1"></div>
+            </div>
+          )}
+          </div>
+        );
+      }
+    }
+    
+    ReactDOM.render(
+      <Square />,
+      document.getElementById('root')
+    );
+	</script>
+  </body>
+</html>
