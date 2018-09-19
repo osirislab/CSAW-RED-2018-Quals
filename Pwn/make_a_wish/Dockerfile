@@ -19,5 +19,5 @@ RUN chown -R root:mina /home/mina && \
 
 EXPOSE 1337
 
-CMD ["socat", "-T60", "TCP-LISTEN:1337,reuseaddr,fork,su=mina", "EXEC:/home/mina/b0f,pty"]
+CMD ["socat", "-T60", "TCP-LISTEN:1337,reuseaddr,fork,su=mina", "EXEC:/home/mina/b0f,pty,rawer"]
 
