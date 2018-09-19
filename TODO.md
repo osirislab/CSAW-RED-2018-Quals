@@ -1,32 +1,38 @@
-# Crypto: (8)
-- Vigenere Ciper?
+# Crypto: (4+)
+- Vigenere Ciper
 - RSA shit
     - Broken RSA Implementation
     - Intro to RSA 
     - Programming-ish challenge (multiple sets of variables sent
       back and forth)
 - Come up with some other cipher
-- Second Caesar Salad chall
+- ~~ Second Caesar Salad chall ~~
 
-# Reversing: (4+, and whatever Sai has)
-- Whatever we can get tbh
+# Reversing: (3 + 5)
 - Bomb lab
-- Journal entries stored in a binary
-- Fake print service with a super user account
 - _The Grabber_ - binary that greps for and sends .csv and .pdf files to a remote
+- Kyle's VM
+    - Journal entries stored in a binary
+- 5 easy
 
-# Pwn:
+# Pwn (currently seems hard?) (3):
 - Buffer Overflow (Mina/Leon)
 - Printf Format String exploit(Boying/Leon)
 - tic-tac-toe (Leon : Negative indice arbitrary write into BSS)
+- Basic GOT overwrite (Sai)
+- Basic stack pivot  (Sai)
 
 # Web: (2 + Webassign)
 - Webassign clone
     - PHP webshit
     - admin panel thing
-- Roy's clicker 2 - also forensics
-- More stuff in NYOUClasses
+- Roy's clicker 2
+- One more thing in NYOUClasses
 
 # Forensics (3):
-- Add some more basic stuff
+- File carving
+- PDF polyglot
+- Secure FTP
 
+# Misc (?):
+- Decent programming challs
