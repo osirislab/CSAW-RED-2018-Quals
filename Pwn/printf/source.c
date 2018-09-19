@@ -15,4 +15,10 @@ int main() {
   fgets(buf, 0x30, stdin);
 
   printf(buf);
+
+  printf("Next one:\n");
+
+  fgets(buf, 0x30, stdin);
+
+  printf(buf);
 }
