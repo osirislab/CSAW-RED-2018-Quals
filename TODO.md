@@ -17,7 +17,8 @@
 
 # Pwn:
 - Buffer Overflow (Mina/Leon)
-- Add more if you need it
+- Printf Format String exploit(Boying/Leon)
+- tic-tac-toe (Leon : Negative indice arbitrary write into BSS)
 
 # Web: (2 + Webassign)
 - Webassign clone
