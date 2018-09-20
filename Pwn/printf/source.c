@@ -8,7 +8,7 @@ void print_flag() {
   printf("%s\n", buf);
 }
 
-int main() {
+void do_the_thing() {
   printf("Hello Kyle. How are you doing today?\n");
 
   char buf[0x30];
@@ -21,4 +21,8 @@ int main() {
   fgets(buf, 0x30, stdin);
 
   printf(buf);
+}
+
+int main() {
+  do_the_thing();
 }
