@@ -31,9 +31,11 @@ transmit = send.play_buffer
 
 def make_sounds(contents):
     joined_contents = "x".join(contents)
+    with open('verify', 'w') as out:
+        out.write(joined_contents)
     buffer = make_buffer(joined_contents)
     transmit(buffer)
 
 
-cont = converter("lipsum")
+cont = converter("flag")
 make_sounds(cont)

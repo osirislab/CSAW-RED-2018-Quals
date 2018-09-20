@@ -4,12 +4,16 @@ import quietnet
 import wave
 
 rate = 44100
-freq = 19000# chosen because it is outside most people's hearing and worked for my microphone and speakers
-freq1 = 29000
-freq2 = 39000
+#freq = 19000# chosen because it is outside most people's hearing and worked for my microphone and speakers
+#freq1 = 29000
+#freq2 = 39000
+
+freq = 440
+freq1 = 1200
+freq2 = 24000
 
 channels = 1
-frame_length = 3
+frame_length = 20
 chunk = 256
 datasize = chunk * frame_length
 sigil = "00"
@@ -52,7 +56,7 @@ def make_buffer_from_bit_pattern(pattern, on_freq, off_freq):
 
     return quietnet.pack_buffer(output_buffer)
 
-def make_custom_buffer_from_bit_pattern(pattern, zero_freq=FREQ_OFF, one_freq=FREQ_ONE, two_freq=FREQ_TWO, off_freq=0):
+def make_custom_buffer_from_bit_pattern(pattern, zero_freq=FREQ_ZERO, one_freq=FREQ_ONE, two_freq=FREQ_TWO, off_freq=0):
     """ Takes a pattern and returns an audio buffer that encodes that pattern """
     # the key's middle value is the bit's value and the left and right bits are the bits before and after
     # the buffers are enveloped to cleanly blend into each other
@@ -69,14 +73,17 @@ def make_custom_buffer_from_bit_pattern(pattern, zero_freq=FREQ_OFF, one_freq=FR
             next_bit = pattern[0]
 
         freq = 0 
-
         if bit == '0':
+            print('0')
             freq = zero_freq
         elif bit == '1':
+            print('1')
             freq = one_freq
         elif bit == '2':
+            print('2')
             freq = two_freq
         else:
+            print('0')
             freq = off_freq
 
         tone = quietnet.tone(freq, DATASIZE, offset=offset)
@@ -89,7 +96,7 @@ def make_custom_buffer_from_bit_pattern(pattern, zero_freq=FREQ_OFF, one_freq=FR
 def play_buffer(buffer):
     output = b''.join(buffer)
     #stream.write(output)
-    wave_file = wave.open("test.wav", 'wb')
+    wave_file = wave.open("output.wav", 'wb')
     wave_file.setnchannels(CHANNELS)
     wave_file.setsampwidth(p.get_sample_size(FORMAT))
     wave_file.setframerate(RATE)
