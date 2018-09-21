@@ -1,0 +1,8 @@
+{
+    "name": "make_a_wish",
+    "category": "Pwn",
+    "description": "It's my birthday, plz overflow me with wishes.\n\n",
+    "flag": "flag{h@ppy_B!rthd@y_t0___m3___thxxxxxxx}",
+    "points": ,
+    "files": ["make_a_wish"],
+} 
