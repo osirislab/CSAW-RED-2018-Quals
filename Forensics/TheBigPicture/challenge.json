@@ -1,0 +1,9 @@
+{
+    "name":"TheBigPicture",
+    "category":"Forensics",
+    "description":"She just told me to look at the big picture, gave me this, and walked away...",
+    "flag":"flagPFile_Extr4Ct10n_is_pretty_c00L}",
+    "points":100,
+    "files":["output.pcapng"],
+    "unlocked_by": null
+}

@@ -1,0 +1,9 @@
+{
+    "name":"PacketPacket",
+    "category":"Forensics",
+    "description":"What is this guy doing? Why can I see his traffic?",
+    "flag":"flag{this_is_a_test_flag_theres_a_lot_going_on_here}",
+    "points":100,
+    "files":["output.pcapng"],
+    "unlocked_by": null
+}

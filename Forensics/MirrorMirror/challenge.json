@@ -1,0 +1,9 @@
+{
+    "name":"MirrorMirror",
+    "category":"Forensics",
+    "description":"Who's the fairest? \n\n 128.238.66.246",
+    "flag":"flag{awww_yeah_now_everybody_clap_your_hands}",
+    "points":50,
+    "files":[],
+    "unlocked_by": null
+}

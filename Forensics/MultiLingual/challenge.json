@@ -1,0 +1,9 @@
+{
+    "name":"MultiLingual",
+    "category":"Forensics",
+    "description":"There's something funny about this physics lab...",
+    "flag":"flag{mult1_L1nguAL_and_p0LyGL0tt4L_ar3_th3_sam3}",
+    "points":150,
+    "files":["output.pdf"],
+    "unlocked_by": null
+}
