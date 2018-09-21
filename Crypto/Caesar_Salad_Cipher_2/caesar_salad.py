@@ -36,22 +36,22 @@ This _lettuce_ structure is a good representation of what makes a caesar salad a
 
 1. First Substitution: R O M A I N E
 
-B: abcdefghijklmnopqrstuvwxyz
-A: romaineBCDFGHJKLPQSTUVWXYZ
+B: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+A: ROMAINEBCDFGHJKLPQSTUVWXYZ
 
 2. Second Substitution: D R E S S I N G
 
-B: romaineBCDFGHJKLPQSTUVWXYZ
+B: ROMAINEBCDFGHJKLPQSTUVWXYZ
 A: DRESINGOMABCFHJKLPQTUVWXYZ
 
 3. Third Substitution: A N C H O V I E S
 
 B: DRESINGOMABCFHJKLPQTUVWXYZ
-A: anchoviesDRGMBFJKLPQTUWXYZ
+A: ANCHOVIESDRGMBFJKLPQTUWXYZ
 
 4. Fourth Substitution: C R O U T O N S
 
-B: anchoviesDRGMBFJKLPQTUWXYZ
+B: ANCHOVIESDRGMBFJKLPQTUWXYZ
 A: CROUTNSAHVIEDGMBFJKLPQWXYZ
 
 5. Fifth Substitution: P A R M E S A N
@@ -74,7 +74,7 @@ Oh no! Someone messed with the permutations of ingrediants and now I have no clu
 
 '''
 
-ingrediants = ['romaine', 'dressing', 'anchovies', 'croutons', 'parmesan']
+ingrediants = ['ROMAINE', 'DRESSING', 'ANCHOVIES', 'CROUTONS', 'PARMESAN']
 
 def substitute(alphabet, substitute):
     x = substitute + alphabet
@@ -84,9 +84,9 @@ def substitute(alphabet, substitute):
             y.append(a)
     return ''.join(y)
 
-alphabet = 'abcdefghijklmnopqrstuvwxyz{}_'
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ{}_'
 cipher = alphabet
-plaintext = 'FLAG{I_LIKE_MY_SALAD_WITH_anchovies_THATS_HOW_CAESAR_INTENDED_IT}'.lower()
+plaintext = 'FLAG{I_LIKE_MY_SALAD_WITH_ANCHOVIES_THATS_HOW_CAESAR_INTENDED_IT}'
 
 for item in ingrediants:
     cipher = substitute(cipher, item)
@@ -108,14 +108,14 @@ print("Decrypted Plaintext: " + decrypt(ciphertext, cipher, alphabet))
 
 print("\n\nCHALLENGE PT 2\n" + "-"*20 + "\n")
 
-ingrediants_master_key = ['dressing', 'anchovies', 'parmesan', 'croutons', 'romaine']
+ingrediants_master_key = ['DRESSING', 'ANCHOVIES', 'PARMESAN', 'CROUTONS', 'ROMAINE']
 
 print "Master Permutation:",
 print(ingrediants_master_key)
 
-alphabet = 'abcdefghijklmnopqrstuvwxyz{}_'
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ{}_'
 cipher = alphabet
-plaintext = 'FLAG{dressing_FIRST_IS_INSANITY_THE_romaine_WONT_BE_PROPERLY_DRESSED}'.lower()
+plaintext = 'FLAG{DRESSING_FIRST_IS_INSANITY_THE_ROMAINE_WONT_BE_PROPERLY_DRESSED}'
 
 for item in ingrediants_master_key:
     cipher = substitute(cipher, item)
@@ -143,7 +143,7 @@ def solver():
         for item in perm:
             cipher = substitute(cipher, item)
         plaintext = decrypt(ciphertext, cipher, alphabet)
-        if "flag" in plaintext:
+        if "FLAG" in plaintext:
             potential_flags.append(plaintext)
     print "\nPotential Flags:"
     print "\n".join(potential_flags)
