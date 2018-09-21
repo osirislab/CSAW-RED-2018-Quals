@@ -5,8 +5,10 @@ It's my birthday, plz overflow me with wishes :)
 ??? pts
 
 # Deploying
+Runs on port 8000 inside container
 
-?????
+$docker build -t make_a_wish .
+$docker run -it -p 8000:1337 make_a_wish
 
 
 # Challenge
