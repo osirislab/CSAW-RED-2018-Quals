@@ -1,7 +1,7 @@
 {
     "name": "Caesar Salad Cipher",
     "category": "Crypto",
-    "description": "Caesar Cipher is outdated, its time to millenialize it and make a Caesar Salad Cipher. Use the _lettuce_ structure in order to get the final substitution cipher required to decode the ciphertext Remember, substitutions are extra!\nAlphabet: `abcdefghijklmnopqrstuvwxyz{}_`\nCiphertext: `shpn{yeek_kdd_heek_rpik_ae_aeek}\nLettuce Structure:\n1. `romaine`\n2. `dressing`\n3. `parmesan`\n4. `anchovies`\n5. `croutons`\n6. `parmesan`",
-    "flag": "flag{yeet_too_leet_cant_be_beet}",
+    "description": "Caesar Cipher is outdated, its time to millenialize it and make a Caesar Salad Cipher. Use the _lettuce_ structure in order to get the final substitution cipher required to decode the ciphertext Remember, substitutions are extra!\nAlphabet: `abcdefghijklmnopqrstuvwxyz{}_`\nCiphertext: shpn{o_hote_vy_jphpm_wokc_pircdqoej_kcpkj_cdw_rpejpf_oikeimem_ok}`\nLettuce Structure:\n1. `romaine`\n2. `dressing`\n3. `parmesan`\n4. `anchovies`\n5. `croutons`\n6. `parmesan`",
+    "flag": "flag{i_like_my_salad_with_anchovies_thats_how_caesar_intended_it}",
     "points": 0
 }
