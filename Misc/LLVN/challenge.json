@@ -1,0 +1,9 @@
+{
+    "name": "LLVN",
+    "category": "Misc",
+    "description": "Can You Follow Instructions? \n\n `nc misc.chal.csaw.io 10101`",
+    "flag": "flag{SsA_Variables_ar3_the_c0olest_shiz}",
+    "points": 200,
+    "files": [],
+    "unlocked_by":null 
+}

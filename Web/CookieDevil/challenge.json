@@ -1,0 +1,9 @@
+{
+   "name": "CookieDevil",
+   "category": "Web",
+   "description": "Now that you can XSS, try it again!\nThis time the flag is in the cookies of the admin. \n\n `web.chal.csaw.io:10102`",
+   "flag": "flag{Cookies_are_my_best_friend}",
+   "points": 200,
+   "files": [],
+   "unlocked_by": "Validation"
+} 

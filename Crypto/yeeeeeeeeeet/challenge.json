@@ -1,0 +1,9 @@
+{
+    "name": "yeeeeeeet",
+    "category": "Crypto",
+    "description": "i yeeted, you yeeted, he/she/they have yeeten",
+    "flag": "flag{yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet_yeet}",
+    "points": 100,
+    "files":["ciphertext.txt"],
+    "unlocked_by": "yeet"
+}

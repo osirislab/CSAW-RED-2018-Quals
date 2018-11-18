@@ -1,0 +1,9 @@
+{
+    "name": "In My Element",
+    "category": "Tutorial",
+    "description": "There is a flag somewhere on this page. Can you find it?",
+    "flag": "flag{new_kung_fu_kenny}",
+    "points": 10,
+    "files": [],
+    "unlocked_by": null
+} 

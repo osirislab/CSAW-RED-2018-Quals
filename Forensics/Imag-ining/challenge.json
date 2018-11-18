@@ -1,0 +1,9 @@
+{
+    "name":"Imag-ining",
+    "category":"Forensics",
+    "description":"Ohhhhhh say can you seeeeeeeeeeeee",
+    "flag":"flag{pass_me_a_scalpel_first_and_foremost}",
+    "points":150,
+    "files":["output.img"],
+    "unlocked_by": null
+}

@@ -1,0 +1,9 @@
+{
+    "name":"ADHD",
+    "category":"Pwning",
+    "description":"All my ideas keep jumping around \n\n`nc pwn.chal.csaw.io 10102`",
+    "flag":"flag{ADHD_is_a_serious_illness_and_can_have_many_symptoms!}",
+    "points":250,
+    "files":["adhd", "libc.so.6"],
+    "unlocked_by": null
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Caesar Salad Cipher Part 2",
+    "category": "Crypto",
+    "description": "Oh no! Someone messed with the permutations of ingrediants and now I have no clue how to decipher the message! Try and recover the plaintext!\nAlphabet: `abcdefghijklmnopqrstuvwxyz{}_`\nCiphertext: npre{afijjuve_nufjk_uj_uvjrvuky_kci_fdhruvi_wdvk_oi_gfdgifpy_afijjia}`",
+    "flag": "flag{dressing_first_is_insanity_the_romaine_wont_be_properly_dressed}",
+    "points": 125,
+    "files":[],
+    "unlocked_by":"Caesar Salad Cipher"
+}

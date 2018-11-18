@@ -1,0 +1,9 @@
+{
+    "name": "Magic 1",
+    "category": "Misc",
+    "description": "Do you believe in magic?\n\n `http://misc.chal.csaw.io:10102`",
+    "flag": "flag{b_th3r3_0r_bee_squ4re}",
+    "points": 100,
+    "files": [],
+    "unlocked_by": null
+} 

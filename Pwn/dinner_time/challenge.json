@@ -1,0 +1,9 @@
+{
+    "name":"dinner_time",
+    "category":"Pwning",
+    "description":"Have this delicious meal \n\n `nc pwn.chal.csaw.io 10104`",
+    "flag":"flag{yuUUmmmMMMMmmyyyy}",
+    "points":150,
+    "files":[],
+    "unlocked_by": null
+}

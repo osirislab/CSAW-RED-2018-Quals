@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block header %}
+    <head>
+        {% block title %}
+            <title>NYOU Classes</title>
+        {% endblock %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </head>
+{% endblock %}
+
+<body>
+<div class="container-fluid">
+    <div class="content" >
+        <div class="hidden-xs">
+            <div class="">
+                <h2><a href="/">NYOU Classes</a></h2>
+            </div>
+        </div>
+        {% block navbar %}
+            <nav id="top-navbar" class="nav navbar navbar-expand-sm nav-pills bg-light">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" id="Home-nav" href="/">Home</a>
+                    </li>
+                    {% for class_name in classes %}
+                    <li class="nav-item">
+                        <a class="nav-link" id="{{ class_name }}-nav" href="/class/{{ class_name }}">{{ class_name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="/profile">{{ g.user }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="search-nav" href="/search">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav><br>
+        {% endblock %}
+            {% for code, message in get_flashed_messages()  %}
+            {% if code == "error" %}
+            <div class="alert alert-danger alert-dismissible">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{ message }}</strong>
+            </div>
+            {% elif code == "success" %}
+            <div class="alert alert-success alert-dismissible">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{ message }}</strong>
+            </div>
+            {% endif %}
+        {% endfor %}
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+</body>
+
+<script>
+    $(document).ready(function() {
+        // get current URL path and assign 'active' class
+        var navbar = document.getElementById("top-navbar");
+        var nav_items = navbar.getElementsByTagName('a');
+
+        for (var i=0; i<nav_items.length; ++i) {
+            if (nav_items.item(i).id.toString() == "{{ class_name }}-nav") {
+                nav_items.item(i).className += " active";
+                break;
+            }
+        }
+    })
+</script>
+</html>

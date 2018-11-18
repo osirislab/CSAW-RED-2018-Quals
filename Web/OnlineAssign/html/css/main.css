@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.header {
+    width: 100%;
+    background-color: #88f;
+    overflow: hidden;
+    padding: 4px;
+}
+
+.header-left {
+    float: left;
+}
+
+.header-right {
+    float: right;
+    margin-right: 10px;
+}
+
+.content {
+    margin-left: 10px;
+}
+
+.panel {
+    width: 50%;
+    border: solid #88f 1px;
+    margin-bottom: 10px;
+}
+
+.panel h4 {
+    margin: 0;
+    padding: 3px;
+    padding-left: 10px;
+    background-color: #ccf;
+}
+
+.panel > * {
+    margin: 10px 0;
+    padding-left: 10px;
+}
+
+.login-form {
+    margin: 10px 20px;
+}
+
+.login-form input {
+    margin-top: 10px;
+}
+
+.error {
+    color: red;
+}

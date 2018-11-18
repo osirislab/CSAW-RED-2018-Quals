@@ -1,0 +1,9 @@
+{
+    "name": "road",
+    "category": "Reversing",
+    "description": "go go go on an adventure !! \n\n `nc reversing.chal.csaw.io 10105`",
+    "flag": "flag{y0u_Kn0_da_G0ph3r}",
+    "points": 200,
+    "files": ["road"],
+    "unlocked_by": "Just Another Bomb Lab (JABLAB)"
+}

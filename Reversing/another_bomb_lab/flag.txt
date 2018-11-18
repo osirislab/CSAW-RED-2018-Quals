@@ -1,0 +1,1 @@
+flag{an0ther_b1n_b0mb_g0ne}

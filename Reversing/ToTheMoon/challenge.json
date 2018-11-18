@@ -1,0 +1,12 @@
+{
+    "name": "ToTheMoon",
+    "category": "Reversing",
+    "description": "This kid reallllly wants me to join his crypto currency startup",
+    "flag": "flag{WH4T_MONEY}",
+    "points": 400,
+    "files": ["ethersplay.abi","ethersplay.bytecode"],
+    "unlocked_by": "BabyRev"
+}
+
+
+

@@ -1,0 +1,9 @@
+{
+    "name": "Adrift",
+    "category": "Web",
+    "description": "I once was lost, but now am found",
+    "flag": "flag{wh@t_Ar3_lAt3_b1nDiNg_cl0sUreS}",
+    "points": 100,
+    "files":["clicker2.0.zip"],
+    "unlocked_by": ""
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Negativity",
+    "category": "Web",
+    "description": "Some people say we need negativity to grow. Maybe they're right",
+    "flag": "flag{d1d_u_eXp3r1ence_gr0wTh}",
+    "points": 250,
+    "files":["clicker2.0.zip"],
+    "unlocked_by": ""
+}

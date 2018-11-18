@@ -1,0 +1,9 @@
+{
+   "name": "Validation",
+   "category": "Web",
+   "description": "Now you have to do your homework!\nWhen you submit a homework assignment, the submission will be validated on the server. What this means, is that your homework submission will be rendered in a webpage on the server! Some nasty things can happen here......\nThis challange requires you to send the flag to a public IP address (one that you control).\nThe flag is at /flag.txt, but it can only be accesed by the server itself! \n\n `web.chal.csaw.io:10105`",
+   "flag": "flag{Validation_feels_good_doesnt_it}",
+   "points": 200,
+   "files": [],
+   "unlocked_by": "Easy_Search"
+} 

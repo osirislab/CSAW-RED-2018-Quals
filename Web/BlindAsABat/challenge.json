@@ -1,0 +1,9 @@
+{
+   "name": "BlindAsABat",
+   "category": "Web",
+   "description": "Now that you can SQLI, can you use that to leak out information from the database?\nThe flag is in a hidden table.\nHint: You will need to use information_schema \n\n `web.chal.csaw.io:10101`",
+   "flag": "flag{0h_8oy_7h@7_Wa2_H@rd}",
+   "points": 300,
+   "files": [],
+   "unlocked_by": "Easy_Search"
+} 

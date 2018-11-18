@@ -1,0 +1,10 @@
+{
+    "name": "chary",
+    "category": "Reversing",
+    "description": "Just keep going just keep going \n\n `nc reversing.chal.csaw.io 10106`",
+    "flag": "flag{y4YY_Str0ps_R_fuun}",
+    "points": 250,
+    "files": ["chary"],
+    "unlocked_by": null
+}
+

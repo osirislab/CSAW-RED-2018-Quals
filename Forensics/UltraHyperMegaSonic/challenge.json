@@ -1,0 +1,9 @@
+{
+    "name":"UltraHyperMegaSonic",
+    "category":"Forensics",
+    "description":"0 1 2 10",
+    "flag":"flag{cAAAN_y0000_h33344444R_m3333-N0000000w}",
+    "points":300,
+    "files":["output.wav"],
+    "unlocked_by": "Imag-ining"
+}

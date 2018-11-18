@@ -1,0 +1,9 @@
+{
+    "name": "Open Individualism",
+    "category": "Web",
+    "description": "In the end aren't we all the same anyway?",
+    "flag": "flag{p3rson@l_1den7ity_is_A_m3Me}",
+    "points": 500,
+    "files":["clicker2.0.zip"],
+    "unlocked_by": ""
+}

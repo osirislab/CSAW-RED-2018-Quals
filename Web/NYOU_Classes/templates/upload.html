@@ -1,0 +1,21 @@
+{% extends 'class.html' %}
+
+{% block text_area %}
+    <h2>Upload file for {{ assignment_name }}</h2>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 text-center">
+                <form method="post" enctype=multipart/form-data action="#">
+                    <div class="form-group>">
+                        Upload file <input type="file" name="submission" required>
+                    </div>
+                    <div class="form-group">
+                        <br><input class="btn btn-primary" type="submit" value="submit">
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+{% endblock %}

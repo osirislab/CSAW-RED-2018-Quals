@@ -1,0 +1,9 @@
+{
+    "name":"FeelThePower",
+    "category":"Forensics",
+    "description":"It looks like someone was moving stuff around on Sam's network... hmm...",
+    "flag":"flag{Are_you_F33L1nG_1T_n0w_mR_kRaB5??}",
+    "points":50,
+    "files":["output.pcap"],
+    "unlocked_by":null
+}

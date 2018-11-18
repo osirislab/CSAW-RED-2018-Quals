@@ -1,0 +1,9 @@
+{
+    "name": "yeet",
+    "category": "Crypto",
+    "description": "i yeet, you yeet, he/she/they yeet",
+    "flag": "flag{i_used_to_say_yeet_ironically_but_now_its_become_part_of_my_vocabulary}",
+    "points": 50,
+    "files":["ciphertext.txt"],
+    "unlocked_by": null
+}

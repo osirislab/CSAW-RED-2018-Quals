@@ -1,0 +1,9 @@
+{
+    "name": "Irregular Expressions",
+    "category": "Tutorial",
+    "description": "Can you find the flag in one of these files? Ctrl-F may not be enough.",
+    "flag": "flag{jus7_@_r3gul4r_flag}",
+    "points": 10,
+    "files": ["hello.zip"],
+    "unlocked_by": null
+} 

@@ -1,0 +1,9 @@
+{
+    "name": "Mitochondria",
+    "category": "Reversing",
+    "description": "Are you the powerhouse of the cell?\n\nhttps://docs.google.com/spreadsheets/d/1j4hL84mBqzJAGWKiTh9_lmzoCEUOOdkwv0yldl9Ko6k/edit?usp=sharing",
+    "flag": "flag{u_cant_contain_meeeeeeeeee}",
+    "points": 100,
+    "files": [],
+    "unlocked_by": null
+} 

@@ -1,0 +1,9 @@
+{
+    "name":"Just Another Bomb Lab (JABLAB)",
+    "category":"Reversing",
+    "description":"I really need to get this OS extra credit \n\n `nc reversing.chal.csaw.io 10101`",
+    "flag":"flag{an0ther_b1n_b0mb_g0ne}",
+    "points":100,
+    "files":["bomb"],
+    "unlocked_by": null
+}

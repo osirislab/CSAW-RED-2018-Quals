@@ -1,0 +1,9 @@
+{
+   "name": "SQLIntro",
+   "category": "Web",
+   "description": "Can you log into the admin's account without knowing the password?\n\n `web.chal.csaw.io:10104`",
+   "flag": "flag{j00'V3_pa223d_w38_s3cUri7Y_101}",
+   "points": 50,
+   "files": [],
+   "unlocked_by": null
+} 

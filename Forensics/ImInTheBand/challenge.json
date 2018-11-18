@@ -1,0 +1,9 @@
+{
+    "name":"I'mInTheBand",
+    "category":"Forensics",
+    "description":"Somneone put this up in the lounge, but I can't see anything",
+    "flag":"flag{i_think_my_3y3s1ght_15_g3tt1ng_w0r5e!}",
+    "points":100,
+    "files":["output.bmp"],
+    "unlocked_by":null
+}

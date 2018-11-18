@@ -1,0 +1,9 @@
+{
+   "name": "Easy_Search",
+   "category": "Web",
+   "description": "Oh boy SQLI sure is easy right?\nCan you change the query that the search performs to get the admin's password? \n\n `web.chal.csaw.io:10103`",
+   "flag": "flag{W45_7h47_4n_4c7u4l_VlUn_0NC3}",
+   "points": 100,
+   "files": [],
+   "unlocked_by": "SQLIntro"
+} 

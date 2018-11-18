@@ -1,0 +1,9 @@
+{
+    "name": "Magic 2",
+    "category": "Misc",
+    "description": "Magic is more complicated than you think\n\n `http://misc.chal.csaw.io:10103`",
+    "flag": "flag{y3r_a_wiz3rd_h4rry}",
+    "points": 150,
+    "files": [],
+    "unlocked_by": "Magic 1"
+} 

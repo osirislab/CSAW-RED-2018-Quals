@@ -1,0 +1,9 @@
+{
+    "name": "DEStiny",
+    "category": "Crypto",
+    "description": "I remember when I got the news. It made me weak with joy.",
+    "flag": "flag{it_w4z_ment_2b}",
+    "points": 200,
+    "files": ["destiny.enc", "gen.py"],
+    "unlocked_by": "EasyRSA"
+} 

@@ -1,0 +1,23 @@
+{% extends 'class.html' %}
+
+{# https://www.w3schools.com/bootstrap4/bootstrap_navs.asp #}
+{# dynamic / toggleable tabs #}
+
+{% block text_area %}
+<h4>
+  <a href="/verify/{{ class_name }}/{{ assignment_name }}">
+    Verify assignment!!!
+  </a>
+</h4>
+    <div style="padding: 1ch;">
+      {% if assignment_file %}
+      <object data="/{{ assignment_submission }}" type="application/pdf" width="300" height="200">
+        <a href="/{{ assignment_submission }}">{{ assignment_name }}.pdf</a>
+      </object>
+    <!-- <embed src="/{{ assignment_submission }}" type="application/pdf"/> -->
+    {% else %}
+        <p>{{ assignment_submission | safe }}</p>
+    {% endif %}
+
+    </div>
+{% endblock %}

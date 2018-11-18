@@ -1,0 +1,9 @@
+{
+    "name":"MakeAWish",
+    "category":"Pwning",
+    "description":"I love that they made sure to wish me a happy birthday... it was back in June though. \n\n `nc pwn.chal.csaw.io 10106`",
+    "flag":"flag{h@ppy_B!rthd@y_t0___m3___thxxxxxxx}",
+    "points":50,
+    "files":[],
+    "unlocked_by": null
+}

@@ -1,0 +1,12 @@
+{
+    "name": "flippityflop",
+    "category": "Reversing",
+    "description": "Somethings a little off here! I'm Anggrryyy \n\n `nc reversing.chal.csaw.io 10104`",
+    "flag": "flag{0bfuscated_b1nAri3s_4re_A_7hing}",
+    "points": 350,
+    "files": ["flippityflop"],
+    "unlocked_by": "BabyRev"
+}
+
+
+

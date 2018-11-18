@@ -1,0 +1,9 @@
+{
+    "name": "Misframed",
+    "category": "Misc",
+    "description": "Sometimes you're in the wrong place at the wrong time.",
+    "flag": "flag{th3y-t4k3_7he+J~tr4in}",
+    "points": 50,
+    "files": ["misframed.zip"],
+    "unlocked_by": null
+} 

@@ -1,0 +1,9 @@
+{
+    "name":"Poprops",
+    "category":"Pwning",
+    "description":"I found a bag of poprops, they're reall off the chain \n\n`nc pwn.chal.csaw.io 10107`",
+    "flag":"flag{p0ppity_po0pity_pop_U_6ot_tH3_fl4g}",
+    "points":300,
+    "files":[],
+    "unlocked_by": null
+}

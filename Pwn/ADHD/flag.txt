@@ -1,0 +1,1 @@
+flag{ADHD_is_a_serious_illness_and_can_have_many_symptoms!}

@@ -1,0 +1,9 @@
+{
+    "name": "Can't Touch This",
+    "category": "Forensics",
+    "description": "What has Casey been doing on the internet lately?",
+    "flag": "flag{just_ch1ll1n}",
+    "points": 100,
+    "files": ["data", "G011A.png"],
+    "unlocked_by": null
+} 

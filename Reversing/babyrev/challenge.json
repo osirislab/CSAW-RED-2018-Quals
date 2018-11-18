@@ -1,0 +1,10 @@
+{
+    "name": "BabyRev",
+    "category": "Reversing",
+    "description": "eazy peazy reverzing :) \n\n `nc reversing.chal.csaw.io 10102`",
+    "flag": "flag{60od_job_B4by_r3VeRzyng_C0mPl3tE!}",
+    "points": 100,
+    "files": ["babyrev"],
+    "unlocked_by": null
+}
+

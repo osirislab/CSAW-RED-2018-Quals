@@ -1,0 +1,9 @@
+{
+    "name":"pibolar",
+    "category":"Pwning",
+    "description":"They had pie in the dining hall today. \n\n`nc pwn.chal.csaw.io 10103`",
+    "flag":"flag{Can'tdecidewhereyouareinlife?Don'tworrybehappy}",
+    "points":200,
+    "files":["pibolar"],
+    "unlocked_by": null
+}

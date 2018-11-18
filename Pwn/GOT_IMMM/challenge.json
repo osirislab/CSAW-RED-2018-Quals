@@ -1,0 +1,9 @@
+{
+    "name":"GOT_IMMM",
+    "category":"Pwning",
+    "description":"Get it GOT it Good! \n\n `nc pwn.chal.csaw.io 10105`",
+    "flag":"flag{wE_g3t_fL4gz_0ut_H3re}",
+    "points":150,
+    "files":[],
+    "unlocked_by": null
+}

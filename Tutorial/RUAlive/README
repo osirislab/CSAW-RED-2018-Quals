@@ -1,0 +1,3 @@
+Run this in a terminal pretty much
+
+`echo "synt{j3yp0z3_2_e3q}" | tr 'A-Za-z' 'N-ZA-Mn-za-m'`

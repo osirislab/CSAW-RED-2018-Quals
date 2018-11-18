@@ -1,0 +1,9 @@
+{
+    "name": "R U Alive",
+    "category": "Tutorial",
+    "description": "Copy, Paste, Enter.\n\n`echo 'synt{j3yp0z3_2_e3q}' | tr 'A-Za-z' 'N-ZA-Mn-za-m'`",
+    "flag": "flag{w3lc0m3_2_r3d}",
+    "points": 5,
+    "files": [],
+    "unlocked_by": null
+} 
